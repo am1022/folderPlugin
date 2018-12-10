@@ -10,7 +10,7 @@
       "enabled": true
     },
     "design": {
-      "enabled": true
+      "enabled": false
     },
     "settings": {
       "enabled": false
