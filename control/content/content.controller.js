@@ -15,7 +15,7 @@
                 };
                 var _design = {
                     backgroundImage: null,
-                    selectedLayout: 6,
+                    selectedLayout: 1,
                     backgroundblur: 0,
                     hideText: false
                 };
