@@ -53,7 +53,7 @@
                         },
                         "design": {
                             "backgroundImage": null,
-                            "selectedLayout": 1,
+                            "selectedLayout": 6,
                             "backgroundblur": 0,
                             "hideText": false
                         },
@@ -75,7 +75,7 @@
                         },
                         "design": {
                             "backgroundImage": null,
-                            "selectedLayout": 1,
+                            "selectedLayout": 6,
                             "backgroundblur": 0,
                             "hideText": false
                         }

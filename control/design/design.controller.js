@@ -42,7 +42,7 @@
                         if (!$scope.data.design) {
                             $scope.data.design = {
                                 backgroundImage: null,
-                                selectedLayout: 1,
+                                selectedLayout: 6,
                                 backgroundblur: 0,
                                 hideText: false,
                                 securedFeaturesOption:"Enable"

@@ -26,6 +26,7 @@
 
         #pluginsContainer .pluginItem{
             position: relative;
+            display: flex
         }
 
         #pluginsContainer:not(.layout12) .pluginItem .pluginItemDetails {
@@ -94,7 +95,7 @@
         }
 
         #txt.hide + #pluginsContainer {
-            padding-top: 0px;
+            padding-top: 10px !important;
         }
     </style>
 </head>
@@ -117,7 +118,7 @@
                 item.classList.remove("lazy-img");
                 _initImg(item);
             }
-            
+
             function _initImg(item) {
                 img.src = item.getAttribute('data-src');
                 img.className = 'reveal-img';
@@ -212,7 +213,7 @@
 
     function loadData(err, obj) {
         if (err) return;
-        layout = obj.data.design.selectedLayout;
+        layout = "6";
 
         if(!obj.data.design.securedFeaturesOption)
             obj.data.design.securedFeaturesOption="Enable";
@@ -236,7 +237,7 @@
 
 
         var pluginsContainer = document.getElementById("pluginsContainer");
-        pluginsContainer.className = "layout" + layout;
+        pluginsContainer.className = 'layout' + layout;
         pluginsContainer.innerHTML = '';
 
         getPlugins(obj, function (result) {
@@ -535,7 +536,7 @@
     buildfire.datastore.onUpdate(function (obj) {
         loadData(null, obj)
     });
-    
+
     buildfire.messaging.onReceivedMessage = function (event) {
         if (event) {
             var plugin = event.message.data;
@@ -756,199 +757,6 @@
     }
 
     /*
-                                                                Layout-1
-    */
-    #pluginsContainer.layout1 .pluginItem {
-        display: inline-block;
-        border-top: 1px solid rgba(57, 52, 46, 0.25) !important;
-        min-height: 20vw;
-        max-height: 20vw;
-        overflow: hidden;
-    }
-
-    .layout1 .pluginItem .media-holder.media-holder-icon {
-        width: 15vw;
-        height: 15vw;
-        border-radius: 4px;
-        margin: 3vw;
-        text-align: center;
-        float: left;
-        margin-right: 4vw;
-    }
-
-    .layout1 .pluginItem .media-holder.media-holder-icon img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .layout1 .pluginItem .media-holder.media-holder-icon .main-icon {
-        font-size: 15vw !important;
-        position: relative;
-        top: -1px;
-    }
-
-    .layout1 .pluginItem .media-holder.media-holder-icon .main-icon:before {
-        display: inline-block;
-    }
-
-    .layout1 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: relative;
-        margin-top: 8vw !important;
-        display: block;
-    }
-
-    /*
-                                                                Layout-2
-    */
-    #pluginsContainer.layout2 .pluginItem {
-        display: inline-block;
-        border-top: 1px solid rgba(57, 52, 46, 0.25) !important;
-        min-height: 21vw;
-        max-height: 21vw;
-        overflow: hidden;
-    }
-
-    .layout2 .pluginItem .media-holder.media-holder-icon {
-        width: 32vw;
-        height: 18vw;
-        margin: inherit;
-        margin-right: 10px;
-        border-radius: 4px;
-        margin: 2vw;
-        text-align: center;
-        float: left;
-        overflow: hidden;
-    }
-
-    .layout2 .pluginItem .media-holder.media-holder-icon img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .layout2 .pluginItem .media-holder.media-holder-icon .main-icon {
-        font-size: 18vw !important;
-        position: relative;
-        top: -1px;
-    }
-
-    .layout2 .pluginItem .media-holder.media-holder-icon .main-icon:before {
-        display: inline-block;
-    }
-
-    .layout2 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: relative;
-        margin-top: 9vw !important;
-        display: block;
-    }
-
-    /*
-                                                                    Layout-3
-        */
-
-    #pluginsContainer.layout3 .pluginItem {
-        min-height: 70vw;
-        max-height: 70vw;
-        overflow: hidden;
-    }
-
-    .layout3 .media-holder-text {
-        padding: 15px;
-    }
-
-    .layout3 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-        text-align: left;
-    }
-
-    .layout3 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    .layout3 .media-holder.media-holder-icon.hasImg {
-        max-height: 56vw;
-    }
-
-    /*
-                                                                    Layout-4
-        */
-    #pluginsContainer.layout4 .pluginItem {
-        position: relative;
-        min-height: 56vw;
-        max-height: 56vw;
-        overflow: hidden;
-    }
-
-    .layout4 .media-holder-text {
-        padding: 15px;
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        opacity: .85;
-    }
-
-    .layout4 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-        text-align: left;
-    }
-
-    .layout4 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    /*
-                                                                    Layout-5
-        */
-    #pluginsContainer.layout5 .pluginItem {
-        width: 50%;
-        display: inline-block;
-        text-align: center;
-        position: relative;
-        float: left;
-        min-height: 50vw;
-        max-height: 50vw;
-        overflow: hidden;
-    }
-
-    .layout5 .media-holder-text {
-        padding: 10px;
-        position: absolute;
-        width: 100%;
-        opacity: .85;
-        bottom: 0;
-    }
-
-    .layout5 .pluginItem .media-holder.media-holder-icon .main-icon {
-        font-size: 48.8vw !important;
-        position: relative;
-        top: -1px;
-    }
-
-    .layout5 .pluginItem .media-holder.media-holder-icon .main-icon:before {
-        display: inline-block;
-    }
-
-    .layout5 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-    }
-
-    /*
                                                                     Layout-6
         */
     #pluginsContainer.layout6 .pluginItem {
@@ -981,6 +789,12 @@
 
     .layout6 .media-holder-text {
         padding: 15px 0px;
+        margin-top: -55px;
+    }
+
+    .layout6 .media-holder-text[index="0"] {
+        padding: 15px 0px;
+        margin-top: -9px;
     }
 
     .layout6 .media-holder-text span {
@@ -990,295 +804,6 @@
         display: block;
     }
 
-    /*
-                                                                    Layout-7
-        */
-    #pluginsContainer.layout7 .pluginItem {
-        position: relative;
-        min-height: 45vw;
-        max-height: 45vw;
-        overflow: hidden;
-    }
-
-    .layout7 .media-holder-text {
-        padding: 15px;
-        position: absolute;
-        width: 100%;
-        opacity: .85;
-        bottom: 0px;
-    }
-
-    .layout7 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-        text-align: left;
-    }
-
-    .layout7 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    /*
-                                                                    Layout-8
-        */
-    #pluginsContainer.layout8 .pluginItem {
-        display: block;
-        border-top: 1px solid rgba(57, 52, 46, 0.25) !important;
-        min-height: 18vw;
-        max-height: 18vw;
-        overflow: hidden;
-    }
-
-    .layout8 img {
-        border-radius: 50% !important;
-    }
-
-    .layout8 .pluginItem .media-holder.media-holder-icon {
-        width: 15vw;
-        height: 15vw;
-        margin: inherit;
-        margin-right: 10px;
-        border-radius: 4px;
-        margin: 2vw;
-        text-align: center;
-        float: left;
-    }
-
-    .layout8 .pluginItem .media-holder.media-holder-icon .main-icon {
-        font-size: 15vw !important;
-        position: relative;
-        top: -1px;
-    }
-
-    .layout8 .pluginItem .media-holder.media-holder-icon .main-icon:before {
-        display: inline-block;
-    }
-
-    .layout8 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: relative;
-        margin-top: 7.5vw !important;
-        display: block;
-    }
-
-    /*
-                                                                    Layout-9
-        */
-    #pluginsContainer.layout9 .pluginItem {
-        position: relative;
-        min-height: 56vw;
-        max-height: 56vw;
-        overflow: hidden;
-    }
-
-    .layout9 .blackLayer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 7;
-        background: rgba(0, 0, 0, 0.35);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
-    .layout9 .media-holder-text {
-        position: absolute;
-        top: 50%;
-        margin-top: -10px;
-        left: 0;
-        width: 100%;
-        padding: 0 20px;
-        font-size: 16px;
-        line-height: 24px;
-        color: #fff;
-        z-index: 7;
-        -webkit-transform: translate3d(0, 0, 0);
-        text-align: center;
-    }
-
-    .layout9 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-    }
-
-    .layout9 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    /*
-                                                                    Layout-10
-        */
-    #pluginsContainer.layout10 .pluginItem {
-        position: relative;
-        margin-bottom: 1px;
-        min-height: 23.5vw;
-        max-height: 23.5vw;
-        overflow: hidden;
-    }
-
-    .layout10 .blackLayer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 7;
-        background: rgba(0, 0, 0, 0.35);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
-    .layout10 .media-holder-text {
-        position: absolute;
-        top: 50%;
-        margin-top: -10px;
-        left: 0;
-        width: 100%;
-        padding: 0 20px;
-        font-size: 16px;
-        line-height: 24px;
-        color: #fff;
-        z-index: 7;
-        -webkit-transform: translate3d(0, 0, 0);
-        text-align: center;
-    }
-
-    .layout10 .media-holder-text span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: block;
-    }
-
-    .layout10 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    /*
-                                                                        Layout-11
-            */
-    #pluginsContainer.layout11 .pluginItem {
-        position: relative;
-        width: 50%;
-        display: inline-block;
-        text-align: center;
-        float: left;
-        padding: 1px;
-        min-height: 50vw;
-        max-height: 50vw;
-        overflow: hidden;
-    }
-
-    #pluginsContainer.layout11 .pluginItem .pluginItemDetails {
-        position: relative !important;
-        height: 100%;
-    }
-
-    .layout11 .blackLayer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 7;
-        background: rgba(0, 0, 0, 0.35);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
-    .layout11 .media-holder-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    .layout11 .media-holder {
-        text-align: center;
-        width: 100%;
-    }
-
-    .layout11 .pluginItem .media-holder.media-holder-icon {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .layout11 .pluginItem .media-holder.media-holder-icon img {
-        display: block;
-        /*position: absolute;*/
-        /*top: 50%;*/
-        /*left: 50%;*/
-        min-height: 100%;
-        min-width: 100%;
-        /*transform: translate(-50%, -50%);*/
-    }
-
-    .layout11 .pluginItem .media-holder.media-holder-icon .main-icon {
-        font-size: 48vw !important;
-        position: relative;
-        top: -1px;
-    }
-
-    .layout11 .pluginItem .media-holder.media-holder-icon .main-icon:before {
-        display: inline-block;
-    }
-
-    /*
-                                                                        Layout-12
-            */
-    #pluginsContainer.layout12 {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 70%;
-        margin: 0 auto;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 5px 15px;
-        border-radius: 3px;
-    }
-
-    .layout12 .pluginItemFrame {
-        position: relative;
-        width: 100%;
-        margin: 0 auto;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-
-    .layout12 .media-holder-text span {
-        display: block;
-        text-align: center;
-        padding: 10px 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .layout12 .media-holder.media-holder-text {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-        width: 100%;
-    }
-
-    .layout12 .pluginsWrapper {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        vertical-align: top;
-    }
 </style>
 <!-- build:bundleCSSFiles  -->
 <link href="glyphicons.css" rel="stylesheet"/>
